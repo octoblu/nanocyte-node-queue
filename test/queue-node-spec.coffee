@@ -22,12 +22,8 @@ describe 'OctoModel', ->
         @message =
            hi : 'how are you'
         @sendMessage =
-         topic: 'queue'
-         payload:
-           node: @config.id
-           msg:
-             payload: @message
+          message: @message
         @sut = new QueueNode(@config, @data)
         @sut.onMessage(@message, @callback)
       it 'should call the callback with the message', ->
-        expect(@callback).to.have.been.calledWith(null, @sendMessage)
+        expect(@callback).to.have.been.calledWith(null)
